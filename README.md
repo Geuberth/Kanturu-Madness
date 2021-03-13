@@ -5,3 +5,4 @@ Project training-oriented to make a RPG screen-boxed world where the player invo
 This project is developed by:
 
 Geuberth Robles
+Freyman Balaguera
