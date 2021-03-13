@@ -130,4 +130,9 @@ public class PlayerController2D : MonoBehaviour {
             
         }
     }
+
+    public float getHorizontalMove(){
+        
+        return horizontalMove;
+    }
 }
