@@ -7,6 +7,7 @@ public class CombatManager : MonoBehaviour {
     public static CombatManager instance;
     public bool canreceiveInput;
     public bool inputReceive;
+    public Energy_Bar energy_Bar;
 
 
     public Animator animator;

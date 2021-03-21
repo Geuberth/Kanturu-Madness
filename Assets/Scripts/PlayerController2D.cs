@@ -7,14 +7,7 @@ public class PlayerController2D : MonoBehaviour {
     public Animator animator;
     Rigidbody2D rb2d;
     SpriteRenderer spriterenderer;
-
-
-    //float x;
-    //float y = -0.2f;
-    //public GameObject player;
-    //bool peguelo = false; 
-    //bool holdD = false;
-    //bool holdA = false;
+    public Health_Bar healthBar;
 
     bool Grounded;
     float horizontalMove = 0f; 
@@ -38,53 +31,11 @@ public class PlayerController2D : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D>();
         spriterenderer = GetComponent<SpriteRenderer>();
         //pos = player.transform.position;
+        //healthBar.SetMaxHealth(maxHealth);
 
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
 
-    //if (Input.GetKeyDown(KeyCode.D))
-    //{
-    //    holdD = true;
-    //}
-    //if (Input.GetKeyUp(KeyCode.D))
-    //{
-    //    holdD = false;
-    //}
-    //if (holdD)
-    //{
-    //    x = player.transform.position.x;
-    //    x += 0.2f;
-    //    pos = new Vector3(x, player.transform.position.y, 0);
-    //    player.transform.position = pos;
-    //}
-
-    //if (Input.GetKeyDown(KeyCode.A))
-    //{
-    //    holdA = true;
-    //}
-    //if (Input.GetKeyUp(KeyCode.A))
-    //{
-    //    holdA = false;
-    //}
-    //if (holdA)
-    //{
-    //    x = player.transform.position.x;
-    //    x -= 0.2f;
-    //    pos = new Vector3(x, player.transform.position.y, 0);
-    //    player.transform.position = pos;
-    //}
-
-    //if (Input.GetKeyDown(KeyCode.A))
-    //{
-    //    x = player.transform.position.x;
-    //    x -= 1;
-    //    pos = new Vector3(x, player.transform.position.y, 0);
-    //    player.transform.position = pos;
-    //}
-    //}
 
     private void FixedUpdate() {
 
@@ -127,7 +78,7 @@ public class PlayerController2D : MonoBehaviour {
             rb2d.velocity = new Vector2(rb2d.velocity.x, Jump);
             animator.SetBool("Jumping", true);
             animator.Play("Player_jump");
-            
+            healthBar.TakeDamage();     
         }
     }
 

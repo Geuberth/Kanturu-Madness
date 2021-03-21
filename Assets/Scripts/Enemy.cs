@@ -28,9 +28,9 @@ public class Enemy : MonoBehaviour
     }
 
     void Die(){
-        Debug.Log("Muerase loka");
         animator.SetBool("Isdead",true);
-        //GetComponent<Collider2D>().enabled = true;
-        //this.enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+        this.enabled = false;
     }
+
 }
