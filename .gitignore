@@ -58,3 +58,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+UnityPlayer*
+LinuxPlayer*
+*.sln
+*.x86_64
+kanturu_madness_Data
+.vscode
