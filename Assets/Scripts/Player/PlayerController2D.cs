@@ -18,7 +18,13 @@ public class PlayerController2D : MonoBehaviour
     [SerializeField]
     Transform groundCheckR;
 
-
+    [SerializeField]
+    public float Attackrange;
+    [SerializeField]
+    public int AttackDamage = 50;
+    public Energy_Bar energy_Bar;
+    public Transform AttackPoint;
+    public LayerMask EnemyLayers;
     public Animator animator;
     public Health_Bar healthBar;
 
@@ -60,16 +66,33 @@ public class PlayerController2D : MonoBehaviour
     public void OnAttack()
     {
         animator.SetTrigger("Attack");
+        DoDamage();
     }
 
     public void OnAttack2()
     {
         animator.SetTrigger("Attack2");
+        DoDamage();
     }
 
     #endregion "INPUTS"
 
     #region "RESUME"
+    public void DoDamage()
+    {
+        Collider2D[] HitEnemy = Physics2D.OverlapCircleAll(AttackPoint.position, Attackrange, EnemyLayers);
+        foreach (Collider2D enemy in HitEnemy)
+        {
+            enemy.GetComponent<Enemy>().TakeDamage(AttackDamage);
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (AttackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(AttackPoint.position, Attackrange);
+    }
     private void CheckGround()
     {
         if ((Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"))) ||
