@@ -1,33 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Energy_Bar : MonoBehaviour
 {
-    //public Slider slider;
+    private float energy;
     public Image energyEffectImg;
     public Image energyImg;
     [SerializeField] private float maxEnergy;
+    [SerializeField] private float energySpeed = 0.005f;
 
-    [HideInInspector]  public float energy;
-    [SerializeField]
-    private float energySpeed = 0.005f;
-
-    private void Start() {
+    private void Start()
+    {
         energy = maxEnergy;
     }
-    private void Update() {
+    private void Update()
+    {
         Debug.Log(energy);
         energyImg.fillAmount = energy / maxEnergy;
-        if (energyEffectImg.fillAmount > energyImg.fillAmount) {
+        if (energyEffectImg.fillAmount > energyImg.fillAmount)
+        {
             energyEffectImg.fillAmount -= energySpeed;
         }
-        else {
+        else
+        {
             energyEffectImg.fillAmount = energyImg.fillAmount;
         }
     }
-    public void TakeEnergy() {
+    public void TakeEnergy()
+    {
         this.energy -= 10;
     }
 }

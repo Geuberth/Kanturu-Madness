@@ -44,14 +44,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "MultiTap"
-                },
-                {
-                    "name": "HawkAttack",
-                    "type": "Button",
-                    "id": "e00e4426-713a-4132-9dfa-12cda54c0765",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "MultiTap(tapCount=3)"
                 }
             ],
             "bindings": [
@@ -129,17 +121,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4be12e9c-5e47-454a-8986-f13305986dc8",
-                    "path": "<Keyboard>/ctrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HawkAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
