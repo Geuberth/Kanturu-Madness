@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController2D : Character
 {
@@ -14,6 +15,9 @@ public class PlayerController2D : Character
         Debug.Log(currentHealth);
         healthBar.FillBar();
         energyBar.FillBar();
+    }
+    private void Start() {
+        DisableInput();
     }
 
 
@@ -61,6 +65,12 @@ public class PlayerController2D : Character
     }
 
     #endregion "INPUTS"
+
+    protected void DisableInput(){
+
+        GetComponent<PlayerInput>().enabled = false;
+       
+    }
 
     #region "RESUME"
 
