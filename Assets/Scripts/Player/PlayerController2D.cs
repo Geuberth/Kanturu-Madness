@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController2D : MonoBehaviour
 {
@@ -30,9 +31,14 @@ public class PlayerController2D : MonoBehaviour
 
     void Awake()
     {
+
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         spriterenderer = GetComponent<SpriteRenderer>();
+
+    }
+    private void Start() {
+        DisableInput();
     }
 
 
@@ -78,6 +84,12 @@ public class PlayerController2D : MonoBehaviour
     }
 
     #endregion "INPUTS"
+
+    protected void DisableInput(){
+
+        GetComponent<PlayerInput>().enabled = false;
+       
+    }
 
     #region "RESUME"
     public void DoDamage()
