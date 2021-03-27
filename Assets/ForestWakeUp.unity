@@ -761,6 +761,13 @@ MonoBehaviour:
   groundCheck: {fileID: 1126308076}
   groundCheckL: {fileID: 1072062913}
   groundCheckR: {fileID: 2132788253}
+  Attackrange: 8.55
+  AttackDamage: 50
+  energy_Bar: {fileID: 1680633278}
+  AttackPoint: {fileID: 807495888}
+  EnemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
   animator: {fileID: 129604969}
   healthBar: {fileID: 65899576}
 --- !u!114 &129604973
@@ -838,16 +845,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c100d67c60b22e43a7b617367b33e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canreceiveInput: 1
-  inputReceive: 0
-  energy_Bar: {fileID: 0}
-  animator: {fileID: 129604969}
-  AttackPoint: {fileID: 807495888}
-  Attackrange: 8.55
-  EnemyLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  AttackDamage: 50
 --- !u!1 &242528337
 GameObject:
   m_ObjectHideFlags: 0
