@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] protected float health;
     protected float currentHealth;
     protected bool Grounded;
     protected bool right;
     protected bool left;
     protected Rigidbody2D rb2d;
     protected SpriteRenderer spriterenderer;
+    protected Animator animator;
+    [SerializeField] protected float health;
     [SerializeField] protected float runSpeed;
     [SerializeField] protected float Jump;
     [SerializeField] protected Transform groundCheck;
@@ -16,9 +17,8 @@ public class Character : MonoBehaviour
     [SerializeField] protected Transform groundCheckR;
     [SerializeField] protected float Attackrange;
     [SerializeField] protected int AttackDamage = 50;
-    protected Transform AttackPoint;
-    protected Animator animator;
-    protected LayerMask Layer;
+    [SerializeField] protected Transform AttackPoint;
+    [SerializeField] protected LayerMask Layer;
 
     void Awake()
     {
@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         spriterenderer = GetComponent<SpriteRenderer>();
     }
-    protected void DoDamage()
+    protected virtual void DoDamage()
     {
         Collider2D[] HitTargets = Physics2D.OverlapCircleAll(AttackPoint.position, Attackrange, Layer);
         foreach (Collider2D character in HitTargets)
@@ -83,11 +83,13 @@ public class Character : MonoBehaviour
         }
     }
 
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(float damage)
     {
         animator.SetTrigger("Hurt");
-        currentHealth -= damage;
-        if (currentHealth <= 0)
+        if(currentHealth > 0){
+            currentHealth -= damage;
+        }        
+        if (currentHealth <= 0.0f)
         {
             Die();
         }
@@ -96,7 +98,6 @@ public class Character : MonoBehaviour
     protected virtual void Die()
     {
         animator.SetBool("Isdead", true);
-        GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
     }
 }

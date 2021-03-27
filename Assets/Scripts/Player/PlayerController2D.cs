@@ -10,12 +10,9 @@ public class PlayerController2D : Character
 
     void Start()
     {
-        Debug.Log(currentHealth);
         currentHealth = health;
-        Debug.Log(currentHealth);
         healthBar.FillBar();
         energyBar.FillBar();
-        DisableInput();
     }
 
 
@@ -26,7 +23,6 @@ public class PlayerController2D : Character
         CheckMove();
 
         healthBar.TakeDamage(health, currentHealth);
-        Debug.Log(currentHealth);
         energyBar.TakeEnergy(energy, currentEnergy);
 
     }
@@ -70,8 +66,4 @@ public class PlayerController2D : Character
         GetComponent<PlayerInput>().enabled = false;
 
     }
-
-    #region "RESUME"
-
-    #endregion "RESUME"
 }
