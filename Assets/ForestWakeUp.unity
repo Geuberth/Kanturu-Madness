@@ -2451,7 +2451,6 @@ MonoBehaviour:
   energyEffectImg: {fileID: 1716997794}
   energyImg: {fileID: 606406327}
   maxEnergy: 120
-  energy: 0
   energySpeed: 0.005
 --- !u!1 &1710470551
 GameObject:
@@ -2552,7 +2551,7 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 0
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0

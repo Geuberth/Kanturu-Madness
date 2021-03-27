@@ -50,6 +50,8 @@ public class PlayerController2D : MonoBehaviour
         if (Grounded)
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, Jump);
+            energy_Bar.TakeEnergy();
+            healthBar.TakeDamage();
         }
     }
 
