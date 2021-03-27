@@ -3,20 +3,13 @@ using UnityEngine.UI;
 
 public class Energy_Bar : MonoBehaviour
 {
-    private float energy;
     public Image energyEffectImg;
     public Image energyImg;
     [SerializeField] private float maxEnergy;
     [SerializeField] private float energySpeed = 0.005f;
 
-    private void Start()
-    {
-        energy = maxEnergy;
-    }
     private void Update()
     {
-        Debug.Log(energy);
-        energyImg.fillAmount = energy / maxEnergy;
         if (energyEffectImg.fillAmount > energyImg.fillAmount)
         {
             energyEffectImg.fillAmount -= energySpeed;
@@ -26,8 +19,25 @@ public class Energy_Bar : MonoBehaviour
             energyEffectImg.fillAmount = energyImg.fillAmount;
         }
     }
-    public void TakeEnergy()
+
+    public void FillBar()
     {
-        this.energy -= 10;
+        energyEffectImg.fillAmount = 1;
+    }
+
+    public void FillBarByAmount(float amount)
+    {
+        if (energyEffectImg.fillAmount + amount > 1)
+        {
+            energyEffectImg.fillAmount = 1;
+        }
+        else
+        {
+            energyEffectImg.fillAmount += amount;
+        }
+    }
+    public void TakeEnergy(float energy, float currentEnergy)
+    {
+        energyEffectImg.fillAmount = currentEnergy / energy;
     }
 }

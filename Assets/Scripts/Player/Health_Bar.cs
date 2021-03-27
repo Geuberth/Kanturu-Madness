@@ -3,20 +3,13 @@ using UnityEngine.UI;
 
 public class Health_Bar : MonoBehaviour
 {
-    private float Hp;
     public Image healthEffectImg;
     public Image healthImg;
-    [SerializeField] private float maxHp;
     [SerializeField] private float hurtSpeed = 0.005f;
 
-    private void Start()
-    {
-        Hp = maxHp;
-    }
     private void Update()
     {
-        Debug.Log(Hp);
-        healthImg.fillAmount = Hp / maxHp;
+
         if (healthEffectImg.fillAmount > healthImg.fillAmount)
         {
             healthEffectImg.fillAmount -= hurtSpeed;
@@ -26,8 +19,24 @@ public class Health_Bar : MonoBehaviour
             healthEffectImg.fillAmount = healthImg.fillAmount;
         }
     }
-    public void TakeDamage()
+
+    public void FillBar()
     {
-        this.Hp -= 10;
+        healthEffectImg.fillAmount = 1.0f;
+    }
+    public void FillBarByAmount(float amount)
+    {
+        if (healthEffectImg.fillAmount + amount > 1.0f)
+        {
+            healthEffectImg.fillAmount = 1.0f;
+        }
+        else
+        {
+            healthEffectImg.fillAmount += amount;
+        }
+    }
+    public void TakeDamage(float hp, float currentHealth)
+    {
+        healthImg.fillAmount = currentHealth / hp;
     }
 }
