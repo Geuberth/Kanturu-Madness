@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Scene_change
+  - Globin_Enemy
   layers:
   - Default
   - TransparentFX
@@ -53,6 +55,6 @@ TagManager:
   - name: Player
     uniqueID: 1783910951
     locked: 0
-  - name: Prueba
+  - name: Front
     uniqueID: 967871451
     locked: 0
