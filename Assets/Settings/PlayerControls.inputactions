@@ -71,17 +71,6 @@
                 },
                 {
                     "name": "",
-                    "id": "9ddfc63d-4d57-4f24-99b5-f8b8f9d8fe1c",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "119c07d4-414f-44bf-98f9-566e6d618e4c",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
@@ -93,19 +82,8 @@
                 },
                 {
                     "name": "",
-                    "id": "9a56b298-3f3a-45dc-9705-b94393835414",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveRight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "2893ee97-ad15-4aca-a21b-1e11ccce6a27",
-                    "path": "<Keyboard>/ctrl",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
