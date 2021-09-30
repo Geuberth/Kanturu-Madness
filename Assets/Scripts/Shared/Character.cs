@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     protected Rigidbody2D rb2d;
     protected SpriteRenderer spriterenderer;
     protected Animator animator;
+    protected Collider2D collider;
     [SerializeField] protected float health;
     [SerializeField] protected float runSpeed;
     [SerializeField] protected float Jump;
@@ -25,6 +26,7 @@ public class Character : MonoBehaviour
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         spriterenderer = GetComponent<SpriteRenderer>();
+        collider = this.GetComponent<Collider2D>();
     }
     protected virtual void DoDamage()
     {
@@ -45,15 +47,12 @@ public class Character : MonoBehaviour
     }
 
     protected void CheckGround()
-    {
-        if ((Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"))) ||
-            (Physics2D.Linecast(transform.position, groundCheckR.position, 1 << LayerMask.NameToLayer("Ground"))) ||
-            (Physics2D.Linecast(transform.position, groundCheckL.position, 1 << LayerMask.NameToLayer("Ground"))))
+    { 
+        if (this.collider.IsTouching(GameObject.Find("Ground").GetComponent<Collider2D>()))
         {
             Grounded = true;
             animator.SetBool("Jumping", false);
-        }
-        else
+        } else
         {
             Grounded = false;
             animator.SetBool("Jumping", true);
