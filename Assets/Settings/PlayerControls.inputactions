@@ -19,7 +19,7 @@
                     "id": "b8c1dd49-c8ea-466c-a8ab-3eef366190c5",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)"
+                    "interactions": ""
                 },
                 {
                     "name": "MoveRight",
@@ -27,7 +27,7 @@
                     "id": "1053c11a-e1cb-445f-a46b-90044f21faad",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)"
+                    "interactions": ""
                 },
                 {
                     "name": "Attack",
@@ -38,12 +38,12 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Attack2",
+                    "name": "Stand",
                     "type": "Button",
-                    "id": "ad77da73-134c-4f99-bbf6-f8c210a62c50",
+                    "id": "403506a8-6f40-4950-85ff-f15f67794ce3",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "MultiTap"
+                    "interactions": "Press(behavior=1)"
                 }
             ],
             "bindings": [
@@ -93,12 +93,34 @@
                 },
                 {
                     "name": "",
-                    "id": "30b49e2d-3553-493b-ae12-16a3c66dc39c",
-                    "path": "<Keyboard>/ctrl",
+                    "id": "387228e1-5d0e-4bf8-b521-2f447aaeeeed",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack2",
+                    "action": "Stand",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bbebb03e-67a4-418b-83c5-bb87dc3b994a",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stand",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aba06ab0-03ae-4ba3-abfc-28253596d5de",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

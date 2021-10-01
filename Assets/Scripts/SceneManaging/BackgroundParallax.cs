@@ -5,18 +5,16 @@ using UnityEngine;
 public class BackgroundParallax : MonoBehaviour
 {
     public BoxCollider2D Collider;
-    public Rigidbody2D rb2d;
     private float width; 
     private float scrollspeed = -2f;
 
     // Start is called before the first frame update
     void Start()
     {
-        Collider = GetComponent<BoxCollider2D>();
-        rb2d = GetComponent<Rigidbody2D>();
-        width = Collider.size.x;
-        Collider.enabled = false;
-        rb2d.velocity = new Vector2(scrollspeed, 0);
+        
+        width = GetComponent<BoxCollider2D>().size.x;
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().velocity = new Vector2(scrollspeed, 0);
     }
 
     // Update is called once per frame

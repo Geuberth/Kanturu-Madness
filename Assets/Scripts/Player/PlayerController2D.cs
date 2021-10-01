@@ -19,7 +19,6 @@ public class PlayerController2D : Character
     private void FixedUpdate()
     {
         CheckGround();
-
         CheckMove();
 
         healthBar.TakeDamage(health, currentHealth);
@@ -27,38 +26,11 @@ public class PlayerController2D : Character
 
     }
 
-    #region "INPUTS"
-    public void OnJump()
-    {
-        if (Grounded)
-        {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, Jump);
-        }
-    }
-
-    public void OnMoveLeft()
-    {
-        left = !left;
-    }
-
-    public void OnMoveRight()
-    {
-        right = !right;
-    }
-
     public void OnAttack()
     {
-        animator.SetTrigger("Attack");
-        DoDamage();
+        GetComponent<Animator>().SetTrigger("Attack");
+        //DoDamage(CheckEnemies());
     }
-
-    public void OnAttack2()
-    {
-        animator.SetTrigger("Attack2");
-        DoDamage();
-    }
-
-    #endregion "INPUTS"
 
     protected void DisableInput()
     {

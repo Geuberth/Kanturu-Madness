@@ -1,93 +1,130 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public enum Move
+    {
+        Left,
+        Right,
+        Stand,
+    }
+
+    public const string ENEMIES_LAYER = "Enemies";
+
     protected float currentHealth;
-    protected bool Grounded;
-    protected bool right;
-    protected bool left;
-    protected Rigidbody2D rb2d;
-    protected SpriteRenderer spriterenderer;
-    protected Animator animator;
-    protected Collider2D collider;
+    protected bool grounded;
+    protected Move movement = Move.Stand;
+
+    protected Dictionary<string, GameObject> children;
+
     [SerializeField] protected float health;
     [SerializeField] protected float runSpeed;
-    [SerializeField] protected float Jump;
-    [SerializeField] protected Transform groundCheck;
-    [SerializeField] protected Transform groundCheckL;
-    [SerializeField] protected Transform groundCheckR;
-    [SerializeField] protected float Attackrange;
-    [SerializeField] protected int AttackDamage = 50;
-    [SerializeField] protected Transform AttackPoint;
-    [SerializeField] protected LayerMask Layer;
+    [SerializeField] protected float jump;
+    [SerializeField] protected float attackRange;
+    [SerializeField] protected int attackDamage;
 
-    void Awake()
+    private void Awake()
     {
-        animator = GetComponent<Animator>();
-        rb2d = GetComponent<Rigidbody2D>();
-        spriterenderer = GetComponent<SpriteRenderer>();
-        collider = this.GetComponent<Collider2D>();
-    }
-    protected virtual void DoDamage()
-    {
-        Collider2D[] HitTargets = Physics2D.OverlapCircleAll(AttackPoint.position, Attackrange, Layer);
-        foreach (Collider2D character in HitTargets)
+        children = new Dictionary<string, GameObject>();
+        for (int i = 0; i < transform.childCount; i++)
         {
-            if (character.enabled)
+            Transform obj = transform.GetChild(i);
+            children.Add(obj.name, obj.gameObject);
+        }
+    }
+
+    protected virtual Collider2D[] CheckEnemies()
+    {
+        Collider2D[] targetsHitted = Physics2D.OverlapCircleAll(children["AttackPoint"].transform.position, attackRange, LayerMask.GetMask(ENEMIES_LAYER));
+        return targetsHitted;
+    }
+
+    protected virtual void DoDamage(Collider2D[] enemies)
+    {
+        if (enemies.Length > 0)
+        {
+            foreach (Collider2D enemy in enemies)
             {
-                character.GetComponent<Character>().TakeDamage(AttackDamage);
+                // if the target is enabled and target is different than this instance then make it take damage.
+                if (enemy.enabled && enemy.gameObject != gameObject)
+                {
+                    enemy.gameObject.GetComponent<Character>().TakeDamage(attackDamage);
+                }
             }
         }
     }
-    protected void OnDrawGizmosSelected()
-    {
-        if (AttackPoint == null)
-            return;
-        Gizmos.DrawWireSphere(AttackPoint.position, Attackrange);
-    }
 
     protected void CheckGround()
-    { 
-        if (this.collider.IsTouching(GameObject.Find("Ground").GetComponent<Collider2D>()))
-        {
-            Grounded = true;
-            animator.SetBool("Jumping", false);
-        } else
-        {
-            Grounded = false;
-            animator.SetBool("Jumping", true);
-        }
+    {
+        grounded = GetComponent<Collider2D>().IsTouching(GameObject.Find("Ground").GetComponent<Collider2D>());
+        GetComponent<Animator>().SetBool("Jumping", !grounded);
+    }
+
+    #region "Character Movement"
+    protected void OnMove()
+    {
+        GetComponent<Animator>().SetBool("Speed", true);
+    }
+
+
+    protected void OnStand()
+    {
+        movement = Move.Stand;
+        GetComponent<Animator>().SetBool("Speed", false);
     }
 
     protected void CheckMove()
     {
-        if (left || right)
+        Debug.Log(movement);
+        if (movement != Move.Stand)
         {
-            animator.SetBool("Speed", true);
-            if (left)
+
+            if (movement == Move.Left)
             {
-                spriterenderer.flipX = true;
-                rb2d.velocity = new Vector2(-runSpeed, rb2d.velocity.y);
+                GetComponent<SpriteRenderer>().flipX = true;
+                GetComponent<Rigidbody2D>().velocity = new Vector2(-runSpeed, GetComponent<Rigidbody2D>().velocity.y);
             }
-            else if (right)
+            else if (movement == Move.Right)
             {
-                spriterenderer.flipX = false;
-                rb2d.velocity = new Vector2(runSpeed, rb2d.velocity.y);
+                GetComponent<SpriteRenderer>().flipX = false;
+                GetComponent<Rigidbody2D>().velocity = new Vector2(runSpeed, GetComponent<Rigidbody2D>().velocity.y);
             }
         }
         else
         {
-            animator.SetBool("Speed", false);
-            rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+            OnStand();
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
         }
     }
 
+    public void OnJump()
+    {
+        if (grounded)
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jump);
+        }
+    }
+    public void OnMoveLeft()
+    {
+        OnMove();
+        movement = Move.Left;
+    }
+
+    public void OnMoveRight()
+    {
+        OnMove();
+        movement = Move.Right;
+    }
+    #endregion "Character Movement"
+    
     public virtual void TakeDamage(float damage)
     {
-        animator.SetTrigger("Hurt");
-        if(currentHealth > 0){
+        GetComponent<Animator>().SetTrigger("Hurt");
+        if (currentHealth > 0)
+        {
             currentHealth -= damage;
-        }        
+        }
         if (currentHealth <= 0.0f)
         {
             Die();
@@ -96,7 +133,7 @@ public class Character : MonoBehaviour
 
     protected virtual void Die()
     {
-        animator.SetBool("Isdead", true);
-        this.enabled = false;
+        GetComponent<Animator>().SetBool("Isdead", true);
+        enabled = false;
     }
 }

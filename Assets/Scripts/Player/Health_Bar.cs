@@ -38,6 +38,5 @@ public class Health_Bar : MonoBehaviour
     public void TakeDamage(float hp, float currentHealth)
     {
         healthImg.fillAmount = currentHealth / hp;
-        Debug.Log(healthImg.fillAmount);
     }
 }
