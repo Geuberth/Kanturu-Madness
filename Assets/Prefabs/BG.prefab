@@ -51,7 +51,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3215744905608636541}
   - component: {fileID: 3215744905608636482}
-  - component: {fileID: 3215744905608636540}
   m_Layer: 0
   m_Name: BG-Bttm
   m_TagString: Untagged
