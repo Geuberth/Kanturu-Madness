@@ -34,6 +34,11 @@ public class Character : MonoBehaviour
         }
     }
 
+    protected void FixedUpdate()
+    {
+        CheckGround();
+        CheckMove();
+    }
     protected virtual Collider2D[] CheckEnemies()
     {
         Collider2D[] targetsHitted = Physics2D.OverlapCircleAll(children["AttackPoint"].transform.position, attackRange, LayerMask.GetMask(ENEMIES_LAYER));
@@ -62,39 +67,32 @@ public class Character : MonoBehaviour
     }
 
     #region "Character Movement"
-    protected void OnMove()
+    protected void Movement()
     {
         GetComponent<Animator>().SetBool("Speed", true);
     }
 
 
-    protected void OnStand()
+    protected void Stand()
     {
-        movement = Move.Stand;
         GetComponent<Animator>().SetBool("Speed", false);
+        movement = Move.Stand;
     }
 
     protected void CheckMove()
     {
-        Debug.Log(movement);
-        if (movement != Move.Stand)
+        switch (movement)
         {
-
-            if (movement == Move.Left)
-            {
-                GetComponent<SpriteRenderer>().flipX = true;
+            case Move.Left:
                 GetComponent<Rigidbody2D>().velocity = new Vector2(-runSpeed, GetComponent<Rigidbody2D>().velocity.y);
-            }
-            else if (movement == Move.Right)
-            {
-                GetComponent<SpriteRenderer>().flipX = false;
+                break;
+            case Move.Right:
                 GetComponent<Rigidbody2D>().velocity = new Vector2(runSpeed, GetComponent<Rigidbody2D>().velocity.y);
-            }
-        }
-        else
-        {
-            OnStand();
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+                break;
+            default:
+                Stand();
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+                break;
         }
     }
 
@@ -105,19 +103,48 @@ public class Character : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jump);
         }
     }
+
     public void OnMoveLeft()
     {
-        OnMove();
+        Movement();
+        GetComponent<SpriteRenderer>().flipX = true;
         movement = Move.Left;
     }
 
     public void OnMoveRight()
     {
-        OnMove();
+        Movement();
+        GetComponent<SpriteRenderer>().flipX = false;
         movement = Move.Right;
     }
+
+    public void OnMoveLeftStop()
+    {
+        if (movement == Move.Right) { }
+        else
+        {
+            Stand();
+        }
+
+    }
+
+    public void OnMoveRightStop()
+    {
+        if (movement == Move.Left) { }
+        else
+        {
+            Stand();
+        }
+    }
     #endregion "Character Movement"
-    
+
+    #region "Attack"
+    public void OnAttack()
+    {
+        GetComponent<Animator>().SetTrigger("Attack");
+        //DoDamage(CheckEnemies());
+    }
+
     public virtual void TakeDamage(float damage)
     {
         GetComponent<Animator>().SetTrigger("Hurt");
@@ -130,6 +157,7 @@ public class Character : MonoBehaviour
             Die();
         }
     }
+    #endregion "Attack"
 
     protected virtual void Die()
     {

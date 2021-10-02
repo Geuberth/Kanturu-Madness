@@ -19,7 +19,7 @@
                     "id": "b8c1dd49-c8ea-466c-a8ab-3eef366190c5",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
                 },
                 {
                     "name": "MoveRight",
@@ -27,7 +27,7 @@
                     "id": "1053c11a-e1cb-445f-a46b-90044f21faad",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
                 },
                 {
                     "name": "Attack",
@@ -38,9 +38,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Stand",
+                    "name": "MoveLeftStop",
                     "type": "Button",
-                    "id": "403506a8-6f40-4950-85ff-f15f67794ce3",
+                    "id": "a5732dc0-63ac-4f60-87a3-2eacdbb4b634",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                },
+                {
+                    "name": "MoveRightStop",
+                    "type": "Button",
+                    "id": "fa6812c9-650b-405f-bc44-ce2ab014c4ea",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press(behavior=1)"
@@ -93,34 +101,23 @@
                 },
                 {
                     "name": "",
-                    "id": "387228e1-5d0e-4bf8-b521-2f447aaeeeed",
+                    "id": "b34021a2-cf18-405c-ac2c-209d55572d4f",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Stand",
+                    "action": "MoveLeftStop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "bbebb03e-67a4-418b-83c5-bb87dc3b994a",
+                    "id": "e426d80d-d699-4766-8791-8ec9d9d3939b",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Stand",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "aba06ab0-03ae-4ba3-abfc-28253596d5de",
-                    "path": "<Keyboard>/z",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Stand",
+                    "action": "MoveRightStop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
