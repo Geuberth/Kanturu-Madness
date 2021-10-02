@@ -5,13 +5,13 @@ using UnityEngine;
 public class MuevetePuta : MonoBehaviour
 {
     [SerializeField] private Vector2 ParallaxEffect;
-    private Transform cameraTransform;
+    [SerializeField] private Transform cameraTransform;
     private Vector3 LastCameraPosition;
     // Start is called before the first frame update
     void Start()
     {
-        cameraTransform = Camera.main.transform;
-        LastCameraPosition = cameraTransform.position;
+        //cameraTransform = Camera.main.transform;
+        LastCameraPosition = transform.position;
 
     }
 
