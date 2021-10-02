@@ -4,5 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/ForestWakeUp.unity
+    guid: ebe68b8e88364c345b2fc09d0286fbce
+  - enabled: 1
+    path: Assets/Desert.unity
+    guid: b40488166ada81f469a7778ae203c17e
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: b67ef45ec505a004d9fc1f0044c01aa1,
+      type: 2}
