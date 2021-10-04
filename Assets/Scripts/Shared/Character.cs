@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static PlayerControls;
 
 public class Character : MonoBehaviour
 {
@@ -72,7 +74,6 @@ public class Character : MonoBehaviour
         GetComponent<Animator>().SetBool("Speed", true);
     }
 
-
     protected void Stand()
     {
         GetComponent<Animator>().SetBool("Speed", false);
@@ -96,7 +97,8 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void OnJump()
+
+    public void OnJump(InputValue value)
     {
         if (grounded)
         {
@@ -104,31 +106,30 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void OnMoveLeft()
+    public void OnMoveLeft(InputValue value)
     {
         Movement();
         GetComponent<SpriteRenderer>().flipX = true;
         movement = Move.Left;
     }
 
-    public void OnMoveRight()
+    public void OnMoveRight(InputValue value)
     {
         Movement();
         GetComponent<SpriteRenderer>().flipX = false;
         movement = Move.Right;
     }
 
-    public void OnMoveLeftStop()
+    public void OnMoveLeftStop(InputValue value)
     {
         if (movement == Move.Right) { }
         else
         {
             Stand();
         }
-
     }
 
-    public void OnMoveRightStop()
+    public void OnMoveRightStop(InputValue value)
     {
         if (movement == Move.Left) { }
         else
@@ -136,10 +137,11 @@ public class Character : MonoBehaviour
             Stand();
         }
     }
+
     #endregion "Character Movement"
 
-    #region "Attack"
-    public void OnAttack()
+    #region "Combat"
+    public void OnAttack(InputValue value)
     {
         GetComponent<Animator>().SetTrigger("Attack");
         //DoDamage(CheckEnemies());
@@ -157,11 +159,12 @@ public class Character : MonoBehaviour
             Die();
         }
     }
-    #endregion "Attack"
 
     protected virtual void Die()
     {
         GetComponent<Animator>().SetBool("Isdead", true);
         enabled = false;
     }
+
+    #endregion "Combat"
 }

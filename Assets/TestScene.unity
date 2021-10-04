@@ -342,6 +342,71 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kargaros
       objectReference: {fileID: 0}
+    - target: {fileID: 7964184251214678554, guid: 10621cc984cfc0d42bdd70de0e764673,
+        type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964184251214678554, guid: 10621cc984cfc0d42bdd70de0e764673,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964184251214678554, guid: 10621cc984cfc0d42bdd70de0e764673,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
+      value: b8c1dd49-c8ea-466c-a8ab-3eef366190c5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964184251214678554, guid: 10621cc984cfc0d42bdd70de0e764673,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: 1053c11a-e1cb-445f-a46b-90044f21faad
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964184251214678554, guid: 10621cc984cfc0d42bdd70de0e764673,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: 90c2b4c3-ab19-47cb-9ab4-22f54c059db8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964184251214678554, guid: 10621cc984cfc0d42bdd70de0e764673,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: a5732dc0-63ac-4f60-87a3-2eacdbb4b634
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964184251214678554, guid: 10621cc984cfc0d42bdd70de0e764673,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: fa6812c9-650b-405f-bc44-ce2ab014c4ea
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964184251214678554, guid: 10621cc984cfc0d42bdd70de0e764673,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
+      value: PlayerActions/MoveLeft[/Keyboard/leftArrow]
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964184251214678554, guid: 10621cc984cfc0d42bdd70de0e764673,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: PlayerActions/MoveRight[/Keyboard/rightArrow]
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964184251214678554, guid: 10621cc984cfc0d42bdd70de0e764673,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: PlayerActions/Attack[/Keyboard/z]
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964184251214678554, guid: 10621cc984cfc0d42bdd70de0e764673,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: PlayerActions/MoveLeftStop[/Keyboard/leftArrow]
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964184251214678554, guid: 10621cc984cfc0d42bdd70de0e764673,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: PlayerActions/MoveRightStop[/Keyboard/rightArrow]
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964184251214678554, guid: 10621cc984cfc0d42bdd70de0e764673,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7964184251214678556, guid: 10621cc984cfc0d42bdd70de0e764673,
         type: 3}
       propertyPath: m_RootOrder
